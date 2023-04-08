@@ -4,7 +4,7 @@ from PIL import Image, UnidentifiedImageError
 from langdetect import detect, lang_detect_exception
 import requests
 from bs4 import BeautifulSoup
-
+import os
 
 app = Flask(__name__)
 
@@ -86,4 +86,4 @@ def result():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
