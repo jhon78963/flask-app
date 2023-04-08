@@ -1,4 +1,4 @@
-Flasl
+Flask
 requests
 beautifulsoup4
 Pillow
