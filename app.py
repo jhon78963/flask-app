@@ -4,6 +4,7 @@ from PIL import Image, UnidentifiedImageError
 from langdetect import detect, lang_detect_exception
 import requests
 from bs4 import BeautifulSoup
+from gevent.pywsgi import WSGIServer
 
 
 app = Flask(__name__)
@@ -85,5 +86,6 @@ def result():
     return render_template('result.html', results=results)
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    http_server = WSGIServer(("0.0.0.0", 8080), app)
+    http_server.serve_forever()
